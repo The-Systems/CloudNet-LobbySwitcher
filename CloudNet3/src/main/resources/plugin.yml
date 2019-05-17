@@ -1,0 +1,6 @@
+name: 'CloudNet-Lobby-Switcher'
+author: 'derrop'
+version: '1.0'
+depend:
+  - 'CloudNet-Bridge'
+main: 'eu.thesystems.cloudnet.lobbyswitcher.v3.CloudNet3LobbySwitcher'
