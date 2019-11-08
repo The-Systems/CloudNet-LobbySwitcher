@@ -51,9 +51,7 @@ public class CloudNet3LobbySwitcher extends JavaPlugin {
         public void sendPlayerToGroup(Player player, String group) {
             CloudNetDriver.getInstance().getCloudServiceProvider().getCloudServicesAsync(group).onComplete((task, serviceInfoSnapshots) -> {
                 if (!serviceInfoSnapshots.isEmpty()) {
-                    serviceInfoSnapshots.stream().findAny().ifPresent(serviceInfoSnapshot -> {
-                        sendPlayer(player, serviceInfoSnapshot.getServiceId().getName());
-                    });
+                    serviceInfoSnapshots.stream().findAny().ifPresent(serviceInfoSnapshot -> sendPlayer(player, serviceInfoSnapshot.getServiceId().getName()));
                 }
             });
         }
@@ -72,7 +70,7 @@ public class CloudNet3LobbySwitcher extends JavaPlugin {
         }
     };
 
-    public SimplifiedServerInfo createServerInfo(ServiceInfoSnapshot serviceInfoSnapshot) {
+    SimplifiedServerInfo createServerInfo(ServiceInfoSnapshot serviceInfoSnapshot) {
         return ServiceInfoSnapshotUtil.isOnline(serviceInfoSnapshot) ? new SimplifiedServerInfo(
                 serviceInfoSnapshot.getServiceId().getTaskName(),
                 serviceInfoSnapshot.getServiceId().getName(),
