@@ -260,10 +260,7 @@ public class GroupConfig {
             GroupConnectableInventoryItem item = this.hotbarItems.stream().filter(i -> i.getSlot() == slot).findFirst().orElse(null);
             if (item != null) {
                 if (item.getNeededPermission() != null && !player.hasPermission(item.getNeededPermission())) {
-                    if (item.getNoPermissionMessage() != null) {
-                        player.sendMessage(ChatColor.translateAlternateColorCodes('&', item.getNoPermissionMessage()));
-                    }
-                    return true;
+                    return false;
                 }
 
                 CloudNetLobbySwitcher.getInstance().sendPlayerToGroup(player, item.getTargetGroup());
