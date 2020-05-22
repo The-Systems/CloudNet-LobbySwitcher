@@ -9,7 +9,7 @@ A Lobbyswitcher for CloudNet v2 and v3
 
 #### Projectpage
 
-https://project.the-systems.eu/resources/cloudnet-lobbyswitcher
+https://project.the-systems.eu/resources/mbedwars-webstats
 
 #### License
 
