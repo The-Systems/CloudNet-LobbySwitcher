@@ -1,13 +1,29 @@
-# CloudNetLobbySwitcher
+<img src="https://the-systems.eu/images/favicons/apple-touch-icon.png" width="60px" />
 
-Spigot: https://www.spigotmc.org/resources/cloudnet-lobbyswitcher.67475/
+# CloudNet-Webinterface
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
-»You may not resell the plugin / website
+#### Info
 
-»You may not offer the plugin / website for download anywhere else
+A Lobbyswitcher for CloudNet v2 and v3
 
-"Every bug / bug should be posted in the thread of the resource, not in the review area, otherwise I will not give support for reported bugs in the review area
+#### Projectpage
 
-»You may not claim ownership of this resource
+https://project.the-systems.eu/resources/cloudnet-lobbyswitcher
 
-»If you do not want to pay anything, you can build the plugin yourself for free, but you will not receive any support for the result and building.
+#### License
+
+    Copyright 2020 TheSystems
+    
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+    
+        http://www.apache.org/licenses/LICENSE-2.0
+    
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+   
