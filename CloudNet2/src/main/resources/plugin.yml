@@ -1,6 +1,7 @@
 name: 'CloudNet-Lobby-Switcher'
 author: 'derrop'
 version: '1.0'
+api-version: '1.15'
 depend:
   - 'CloudNetAPI'
 main: 'eu.thesystems.cloudnet.lobbyswitcher.v2.CloudNet2LobbySwitcher'

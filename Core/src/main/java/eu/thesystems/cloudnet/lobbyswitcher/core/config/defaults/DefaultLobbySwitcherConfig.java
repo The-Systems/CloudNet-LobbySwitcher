@@ -89,7 +89,7 @@ public class DefaultLobbySwitcherConfig extends LobbySwitcherConfig {
                                 ),
                                 new SlottedInventoryItem(
                                         13,
-                                        Material.WATCH.name(),
+                                        Material.CLOCK.name(),
                                         1,
                                         (short) 0,
                                         "&eLobbySwitcher",
@@ -101,7 +101,7 @@ public class DefaultLobbySwitcherConfig extends LobbySwitcherConfig {
                                 ),
                                 new SlottedInventoryItem(
                                         4,
-                                        Material.WATCH.name(),
+                                        Material.CLOCK.name(),
                                         1,
                                         (short) 0,
                                         "&eLobbySwitcher",
