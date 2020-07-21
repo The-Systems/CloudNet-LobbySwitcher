@@ -3,11 +3,10 @@ package eu.thesystems.cloudnet.lobbyswitcher.v3;
  * Created by Mc_Ruben on 02.05.2019
  */
 
-import de.dytanic.cloudnet.common.document.gson.JsonDocument;
 import de.dytanic.cloudnet.driver.CloudNetDriver;
 import de.dytanic.cloudnet.driver.service.ServiceInfoSnapshot;
-import de.dytanic.cloudnet.ext.bridge.BridgeConstants;
-import de.dytanic.cloudnet.ext.bridge.ServiceInfoSnapshotUtil;
+import de.dytanic.cloudnet.ext.bridge.BridgeServiceProperty;
+import de.dytanic.cloudnet.ext.bridge.player.IPlayerManager;
 import de.dytanic.cloudnet.wrapper.Wrapper;
 import eu.thesystems.cloudnet.lobbyswitcher.core.CloudNetLobbySwitcher;
 import eu.thesystems.cloudnet.lobbyswitcher.core.servers.SimplifiedServerInfo;
@@ -37,14 +36,9 @@ public class CloudNet3LobbySwitcher extends JavaPlugin {
 
         @Override
         public void sendPlayer(Player player, String server) {
-            CloudNetDriver.getInstance().getMessenger().sendChannelMessage(
-                    BridgeConstants.BRIDGE_CUSTOM_MESSAGING_CHANNEL_PLAYER_API_CHANNEL_NAME,
-                    "send_on_proxy_player_to_server",
-                    new JsonDocument()
-                            .append("uniqueId", player.getUniqueId())
-                            .append("name", player.getName())
-                            .append("serviceName", server)
-            );
+            CloudNetDriver.getInstance().getServicesRegistry().getFirstService(IPlayerManager.class)
+                    .getPlayerExecutor(player.getUniqueId())
+                    .connect(server);
         }
 
         @Override
@@ -71,12 +65,12 @@ public class CloudNet3LobbySwitcher extends JavaPlugin {
     };
 
     SimplifiedServerInfo createServerInfo(ServiceInfoSnapshot serviceInfoSnapshot) {
-        return ServiceInfoSnapshotUtil.isOnline(serviceInfoSnapshot) ? new SimplifiedServerInfo(
+        return serviceInfoSnapshot.getProperty(BridgeServiceProperty.IS_ONLINE).orElse(false) ? new SimplifiedServerInfo(
                 serviceInfoSnapshot.getServiceId().getTaskName(),
                 serviceInfoSnapshot.getServiceId().getName(),
                 serviceInfoSnapshot.getServiceId().getTaskServiceId(),
                 serviceInfoSnapshot.getServiceId().getNodeUniqueId(),
-                ServiceInfoSnapshotUtil.getOnlineCount(serviceInfoSnapshot)
+                serviceInfoSnapshot.getProperty(BridgeServiceProperty.ONLINE_COUNT).orElse(0)
         ) : null;
     }
 
@@ -90,12 +84,12 @@ public class CloudNet3LobbySwitcher extends JavaPlugin {
         if (!this.switcher.enable(this))
             return;
 
-        Wrapper.getInstance().getEventManager().registerListener(new CloudNet3ServersListener(this));
+        CloudNetDriver.getInstance().getEventManager().registerListener(new CloudNet3ServersListener(this));
     }
 
     @Override
     public void onDisable() {
-        Wrapper.getInstance().getEventManager().unregisterListeners(this.getClassLoader());
+        CloudNetDriver.getInstance().getEventManager().unregisterListeners(this.getClassLoader());
 
         this.switcher.disable();
     }
