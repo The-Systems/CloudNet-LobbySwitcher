@@ -10,9 +10,9 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>Core</module>
-        <module>CloudNet3</module>
-        <module>CloudNet2</module>
+        <module>core</module>
+        <module>cloudnet3</module>
+        <module>cloudnet2</module>
     </modules>
 
     <properties>
