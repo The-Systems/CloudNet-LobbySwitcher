@@ -18,7 +18,7 @@
 
 ## Support
 
-- via Discord: https://discord.gg/CYHuDpx
+- via Discord: https://discord.gg/DbahAcW
 - via Github-Issue: https://github.com/The-Systems/CloudNet-LobbySwitcher/issues
 - via E-Mail to moritz.walter@the-systems.eu
 
