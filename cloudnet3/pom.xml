@@ -18,7 +18,7 @@
         <dependency>
             <groupId>de.dytanic.cloudnet</groupId>
             <artifactId>cloudnet-bridge</artifactId>
-            <version>3.3.0-RELEASE</version>
+            <version>3.4.0-RELEASE</version>
             <scope>provided</scope>
         </dependency>
 
