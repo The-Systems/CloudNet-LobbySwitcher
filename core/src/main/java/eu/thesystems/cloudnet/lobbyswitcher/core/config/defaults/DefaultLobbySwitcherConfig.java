@@ -43,7 +43,8 @@ public class DefaultLobbySwitcherConfig extends LobbySwitcherConfig {
                                                                         "&7OnlineCount: &e%online_count%"
                                                                 ),
                                                                 null,
-                                                                null
+                                                                null,
+                                                                0
                                                         )
                                                 ),
                                                 new GroupedInventoryItems(
@@ -70,7 +71,8 @@ public class DefaultLobbySwitcherConfig extends LobbySwitcherConfig {
                                                                                 8
                                                                         )
                                                                 ),
-                                                                Arrays.asList("HIDE_ENCHANTS")
+                                                                Arrays.asList("HIDE_ENCHANTS"),
+                                                                0
                                                         )
                                                 )
                                         ),
@@ -89,7 +91,7 @@ public class DefaultLobbySwitcherConfig extends LobbySwitcherConfig {
                                 ),
                                 new SlottedInventoryItem(
                                         13,
-                                        Material.CLOCK.name(),
+                                        "WATCH",
                                         1,
                                         (short) 0,
                                         "&eLobbySwitcher",
@@ -97,11 +99,12 @@ public class DefaultLobbySwitcherConfig extends LobbySwitcherConfig {
                                                 "&7Click to switch the Lobby"
                                         ),
                                         null,
-                                        null
+                                        null,
+                                        0
                                 ),
                                 new SlottedInventoryItem(
                                         4,
-                                        Material.CLOCK.name(),
+                                        "WATCH",
                                         1,
                                         (short) 0,
                                         "&eLobbySwitcher",
@@ -109,7 +112,8 @@ public class DefaultLobbySwitcherConfig extends LobbySwitcherConfig {
                                                 "&7Click to switch the Lobby"
                                         ),
                                         null,
-                                        null
+                                        null,
+                                        0
                                 ),
                                 Arrays.asList(
                                         new GroupConnectableInventoryItem(

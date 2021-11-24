@@ -13,6 +13,7 @@ import lombok.Setter;
 import lombok.ToString;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.inventory.Inventory;
@@ -33,6 +34,7 @@ public class GroupConfig {
     private String alreadyConnectedMessage;
     private SlottedInventoryItem inventoryClickableOpenItem, hotbarClickableOpenItem;
     private Collection<GroupConnectableInventoryItem> hotbarItems;
+    private Map<Player, Long> playerHotbarClick;
     private transient Inventory bukkitInventory;
     private transient Map<String, Integer> serverInfos;
 
@@ -52,6 +54,9 @@ public class GroupConfig {
             return false;
         if (this.serverInfos == null)
             this.serverInfos = new HashMap<>();
+        if (this.playerHotbarClick == null) {
+            this.playerHotbarClick = new HashMap<>();
+        }
         if (this.inventory.getTitle() == null || this.inventory.getTitle().isEmpty()) {
             CloudNetLobbySwitcher.getInstance().getPlugin().getLogger().log(Level.SEVERE, "Title of an inventory cannot be empty");
             return false;
@@ -107,14 +112,6 @@ public class GroupConfig {
 
         this.bukkitInventory = inventory;
         return true;
-    }
-
-    private void updateInventory() {
-        /*for (HumanEntity viewer : this.bukkitInventory.getViewers()) {
-            if (viewer instanceof Player) {
-                ((Player) viewer).updateInventory();
-            }
-        }*/
     }
 
     public ItemStack createServerItem(GroupedInventoryItems inventoryItems, SimplifiedServerInfo serverInfo) {
@@ -177,12 +174,14 @@ public class GroupConfig {
         if (newServerInfo == null) {
             this.bukkitInventory.setItem(slot, null);
             this.serverInfos.remove(name);
+            System.out.println("ee");
             this.inventory.getItems().stream().filter(item -> item.getSlot() == slot || item.getSlot() == -1).findFirst()
                     .ifPresent(item -> {
                         ItemStack itemStack = item.toBukkit();
                         if (itemStack == null)
                             return;
                         this.bukkitInventory.setItem(slot, itemStack);
+                        System.out.println("eee");
                     });
             this.updateInventory();
             return;
@@ -254,7 +253,10 @@ public class GroupConfig {
 
     public boolean handleInteract(Player player, int slot) {
         if (this.hotbarClickableOpenItem != null && this.hotbarClickableOpenItem.getSlot() == slot) {
-            this.openInventory(player);
+            if (!playerHotbarClick.containsKey(player) || (System.currentTimeMillis() - playerHotbarClick.get(player)) >= hotbarClickableOpenItem.getRatelimits()) {
+                playerHotbarClick.put(player, System.currentTimeMillis());
+                this.openInventory(player);
+            }
             return true;
         } else if (this.hotbarItems != null && !this.hotbarItems.isEmpty()) {
             GroupConnectableInventoryItem item = this.hotbarItems.stream().filter(i -> i.getSlot() == slot).findFirst().orElse(null);
@@ -269,6 +271,14 @@ public class GroupConfig {
             }
         }
         return false;
+    }
+
+    public void updateInventory() {
+        for (Player player : Bukkit.getOnlinePlayers()) {
+            if (player.getOpenInventory().getTitle().equalsIgnoreCase(getInventory().getTitle())) {
+                openInventory(player);
+            }
+        }
     }
 
     public void openInventory(Player player) {
