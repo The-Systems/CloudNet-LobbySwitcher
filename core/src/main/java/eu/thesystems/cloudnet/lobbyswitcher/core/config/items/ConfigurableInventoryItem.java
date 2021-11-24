@@ -30,6 +30,7 @@ public class ConfigurableInventoryItem {
     private List<String> lore;
     private Collection<ConfigurableItemEnchant> enchants;
     private Collection<String> flags;
+    private int ratelimits;
 
     public ItemStack toBukkit() {
         return this.toBukkit(Collections.emptyMap());
