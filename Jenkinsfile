@@ -14,8 +14,8 @@ pipeline {
             }
             post {
                 success {
-                    archiveArtifacts artifacts: 'v2/target/v2-*-SNAPSHOT.jar', fingerprint: true
-                    archiveArtifacts artifacts: 'v3/target/v3-*-SNAPSHOT.jar', fingerprint: true
+                    archiveArtifacts artifacts: 'cloudnet2/target/CloudNet2-LobbySwitcher.jar', fingerprint: true
+                    archiveArtifacts artifacts: 'cloudnet3/target/CloudNet3-LobbySwitcher.jar', fingerprint: true
                 }
             }
         }
