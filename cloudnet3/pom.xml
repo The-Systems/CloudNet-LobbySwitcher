@@ -25,7 +25,7 @@
           <dependency>
             <groupId>de.dytanic.cloudnet</groupId>
             <artifactId>cloudnet-wrapper-jvm</artifactId>
-            <version>3.4.0-RELEASE</version>
+            <version>3.4.3-RELEASE</version>
             <scope>provided</scope>
           </dependency>
 
