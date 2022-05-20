@@ -4,6 +4,19 @@
 
 <img src="https://cdn.the-systems.eu/icon-transparent-banner.png" width="300px" />
 
+-----
+
+<p style="color:#de0f0f">
+    Vielen Dank für die Nutzung des LobbySwitchers.
+    Die Weiterentwicklung ist ab sofort beendet, der Support des LobbySwitchers endet am 31.06.2022.
+</p>
+<p style="color:#de0f0f">
+    Thank you for using the LobbySwitcher.
+    The further development is finished as of now, the support of the LobbySwitcher ends on 31.06.2022.
+</p>
+
+-----
+
 # <b>CloudNet-LobbySwitcher</b>
 
 ### A LobbySwitcher for CloudNet v2 and v3
